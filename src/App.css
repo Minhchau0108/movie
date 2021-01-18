@@ -95,8 +95,8 @@
 .box{
   border-radius: 30px;
   background: url('https://cdn.bitdegree.org/learn/space.jpeg?229dfb2d');
-  background-position: left top;
-  background-repeat: repeat;
+  background-position:left top;
+  background-repeat:repeat;
   padding: 15px; 
   margin-top: 150px;
 }
