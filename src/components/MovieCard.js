@@ -1,10 +1,14 @@
 import React,{useState} from 'react'
 import {Card,Badge} from "react-bootstrap"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ImStarFull } from "react-icons/im";
 import { IconContext } from "react-icons";
+
+
+
 const MovieCard = (props) => {
     const [isShown, setIsShown] = useState(false);
+    let history = useHistory()
 
     let genre = [];
     props.genres.forEach(x =>{
@@ -15,8 +19,11 @@ const MovieCard = (props) => {
         }     
         )
     })
+    const getMovieDetail = (id) =>{
+        history.push(`/movies/${id}`)
+    }
     return (
-        <div>
+        <div onClick={()=>getMovieDetail(props.movies.id)}>
         <Card style={{ width: '18rem'}} className={`my-4 movie-card ${isShown && `opacity`}`} bg="light">
             <div className="containerImg">
                 <div className="Img">
@@ -33,7 +40,7 @@ const MovieCard = (props) => {
                         ))}
                     </div>)}
             <Card.Body>
-            <Card.Title><Link to={`/movies/${props.movies.id}`} key={props.movies.id}>{props.movies.title}</Link></Card.Title>
+            <Card.Title>{props.movies.title}</Card.Title>
             <Card.Text>
                 <IconContext.Provider value={{ color: "red", size: "1.5em", className: "react-icons"}}>
                     <div>
